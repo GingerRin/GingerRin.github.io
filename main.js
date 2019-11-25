@@ -21,6 +21,18 @@ function Update(){
 	cat = setInterval(catClick, 1000)
 }
 
+function Refresh(){
+	document.getElementById("buttonClicked").innerHTML = gameData.click + " clicks"
+	document.getElementById("currClickPerClick").innerHTML = gameData.clickPerClick
+	document.getElementById("currCostPerClick").innerHTML = "Cost: " + gameData.costPerClick + " clicks"
+	if(gameData.cat<=1){
+			document.getElementById("currCat").innerHTML = "You have " + gameData.cat + " cat"
+		}else{
+			document.getElementById("currCat").innerHTML = "You have " + gameData.cat + " cats"
+		}
+	document.getElementById("currClickPerCat").innerHTML = gameData.clickPerCat * gameData.gainPerCatClick + " CpS"
+}
+
 function Main(){
 	if(gameData.click>=gameData.highestClick) gameData.highestClick = gameData.click
 	if(gameData.highestClick>=10){
@@ -51,12 +63,12 @@ function Main(){
 
 function catClick(){
 	gameData.click += gameData.clickPerCat * gameData.gainPerCatClick
-	document.getElementById("buttonClicked").innerHTML = gameData.click + " clicks"
+	Refresh()
 }
 
 function clickButton(){
 	gameData.click += gameData.clickPerClick
-	document.getElementById("buttonClicked").innerHTML = gameData.click + " clicks"
+	Refresh()
 }
 
 function buyClickPerClick(){
@@ -65,9 +77,7 @@ function buyClickPerClick(){
 		gameData.clickPerClick += gameData.gainPerClick
 		gameData.costPerClick += gameData.costScale
 		gameData.costScale += gameData.costScale
-		document.getElementById("currClickPerClick").innerHTML = gameData.clickPerClick
-		document.getElementById("buttonClicked").innerHTML = gameData.click + " clicks"
-		document.getElementById("currCostPerClick").innerHTML = "Cost: " + gameData.costPerClick + " clicks"
+		Refresh()
 	}
 }
 
