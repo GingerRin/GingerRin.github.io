@@ -28,24 +28,25 @@ function Main(){
 		document.getElementById("currCostPerClick").style.visibility = 'visible'
 	}
 
-	if(gameData.click<=gameData.costPerClick) document.getElementById("buttonCPC").disabled = true
-	else document.getElementById("buttonCPC").disabled = false
+	if(gameData.click>=gameData.costPerClick) document.getElementById("buttonCPC").disabled = false
+	else document.getElementById("buttonCPC").disabled = true
 	
 	if(gameData.highestClick>=100){
 		document.getElementById("buyCat").style.visibility = 'visible'
 		document.getElementById("currCostPerCat").style.visibility = 'visible'
 	}
 	
-	if(gameData.click<=gameData.costPerCat) document.getElementById("buttonCat").disabled = true
-	else document.getElementById("buttonCat").disabled = false
+	if(gameData.click>=gameData.costPerCat) document.getElementById("buttonCat").disabled = false
+	else document.getElementById("buttonCat").disabled = true
 	
 	if(gameData.highestClick>=500 && gameData.boughtCatFood == false && gameData.cat>=1){
 		document.getElementById("buyCatFood").style.visibility = 'visible'
 		document.getElementById("currCostCatFood").style.visibility = 'visible'
 		document.getElementById("descCatFood").style.visibility = 'visible'
 	}
-	if(gameData.click<=gameData.costCatFood) document.getElementById("buttonCatFood").disabled = true
-	else document.getElementById("buttonCatFood").disabled = false
+	if(gameData.click>=gameData.costCatFood && gameData.boughtCatFood == false) 
+		document.getElementById("buttonCatFood").disabled = false
+	else document.getElementById("buttonCatFood").disabled = true
 }
 
 function catClick(){
@@ -95,7 +96,7 @@ function buyCatFood(){
 	if(gameData.click>=gameData.costCatFood){
 		gameData.click -= gameData.costCatFood
 		gameData.gainPerCatClick *= 2 
-		gameData.buyCatFood = true
+		gameData.boughtCatFood = true
 		document.getElementById("buttonClicked").innerHTML = gameData.click + " clicks"
 		document.getElementById("currClickPerCat").innerHTML = gameData.clickPerCat * gameData.gainPerCatClick + " CpS"
 		document.getElementById("buttonCatFood").innerHTML = "Bought cat food"
