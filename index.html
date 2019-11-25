@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" name='viewport' 
+     content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
     <title>Click!</title>
     <style>
     	p.unlockables{
@@ -18,6 +19,11 @@
     	<p class="ex1" id="currClickPerClick">0</p></p>
     <p class="unlockables ex1" id="buyClick"><button onClick="buyClickPerClick()">Buy 1 click per click </button> 
     	<p class="unlockables ex1" id="currCostPerClick">Cost: 10 clicks</p></p>
+    <p class="unlockables ex1" id="buyCat"><button onClick="buyCat()">Buy 1 cat </button> 
+    	<p class="unlockables ex1" id="currCostPerCat">Cost: 100 clicks</p></p>
+    <p class="unlockables" id="currCat">You have 0 cat</p> 
+    <p class="unlockables ex1" id="currCat2">Click by cat per second: 
+    	<p class="unlockables ex1" id="currClickPerCat">1 CpS</p></p>
     <script src="main.js" charset="utf-8" type="text/javascript"></script>
   </body>
 </html>
