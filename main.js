@@ -22,7 +22,8 @@ function Update(){
 }
 
 function Refresh(){
-	document.getElementById("buttonClicked").innerHTML = gameData.click + " clicks"
+	if(gameData.click<=1) document.getElementById("buttonClicked").innerHTML = gameData.click + " click"
+	else document.getElementById("buttonClicked").innerHTML = gameData.click + " clicks"
 	document.getElementById("currClickPerClick").innerHTML = gameData.clickPerClick
 	document.getElementById("currCostPerClick").innerHTML = "Cost: " + gameData.costPerClick + " clicks"
 	if(gameData.cat<=1)document.getElementById("currCat").innerHTML = "You have " + gameData.cat + " cat"
@@ -86,6 +87,7 @@ function buyCat(){
 		gameData.costPerCat += gameData.costScale2
 		gameData.costScale2 += gameData.costScale2
 		gameData.clickPerCat += 1
+		document.getElementById("currCat").style.visibility = 'visible'
 		document.getElementById("currCat2").style.visibility = 'visible'
 		document.getElementById("currClickPerCat").style.visibility = 'visible'
 		Refresh()
