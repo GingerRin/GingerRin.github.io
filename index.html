@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Click!</title>
+    <style>
+    	p.unlockables{
+    		visibility: hidden;
+    	}
+    	p.ex1{
+    		display: inline;
+    	}
+    </style>
+  </head>
+  <body onload="Update()">
+    <p id="buttonClicked">0 clicks</p>
+    <p class="ex1"><button onClick="clickButton()">I'm a button</button> Click per click: 
+    	<p class="ex1" id="currClickPerClick">0</p></p>
+    <p class="unlockables ex1" id="buyClick"><button onClick="buyClickPerClick()">Buy 1 click per click </button> 
+    	<p class="unlockables ex1" id="currCostPerClick">Cost: 10 clicks</p></p>
+    <script src="main.js" charset="utf-8" type="text/javascript"></script>
+  </body>
+</html>
