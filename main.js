@@ -12,7 +12,7 @@ var gameData = {
   clickPerCat: 0,
   gainPerCatClick: 1,
   catFood: 0,
-  costCatFood: 500,
+  costCatFood: 250,
   boughtCatFood: false
 }
 
@@ -25,12 +25,10 @@ function Refresh(){
 	document.getElementById("buttonClicked").innerHTML = gameData.click + " clicks"
 	document.getElementById("currClickPerClick").innerHTML = gameData.clickPerClick
 	document.getElementById("currCostPerClick").innerHTML = "Cost: " + gameData.costPerClick + " clicks"
-	if(gameData.cat<=1){
-			document.getElementById("currCat").innerHTML = "You have " + gameData.cat + " cat"
-		}else{
-			document.getElementById("currCat").innerHTML = "You have " + gameData.cat + " cats"
-		}
+	if(gameData.cat<=1)document.getElementById("currCat").innerHTML = "You have " + gameData.cat + " cat"
+	else document.getElementById("currCat").innerHTML = "You have " + gameData.cat + " cats"
 	document.getElementById("currClickPerCat").innerHTML = gameData.clickPerCat * gameData.gainPerCatClick + " CpS"
+	document.getElementById("currCostPerCat").innerHTML = "Cost: " + gameData.costPerCat + " clicks"
 }
 
 function Main(){
@@ -51,7 +49,7 @@ function Main(){
 	if(gameData.click>=gameData.costPerCat) document.getElementById("buttonCat").disabled = false
 	else document.getElementById("buttonCat").disabled = true
 	
-	if(gameData.highestClick>=500 && gameData.boughtCatFood == false && gameData.cat>=1){
+	if(gameData.highestClick>=250 && gameData.boughtCatFood == false && gameData.cat>=1){
 		document.getElementById("buyCatFood").style.visibility = 'visible'
 		document.getElementById("currCostCatFood").style.visibility = 'visible'
 		document.getElementById("descCatFood").style.visibility = 'visible'
@@ -88,17 +86,9 @@ function buyCat(){
 		gameData.costPerCat += gameData.costScale2
 		gameData.costScale2 += gameData.costScale2
 		gameData.clickPerCat += 1
-		document.getElementById("currCat").style.visibility = 'visible'
-		if(gameData.cat<=1){
-			document.getElementById("currCat").innerHTML = "You have " + gameData.cat + " cat"
-		}else{
-			document.getElementById("currCat").innerHTML = "You have " + gameData.cat + " cats"
-		}
-		document.getElementById("buttonClicked").innerHTML = gameData.click + " clicks"
-		document.getElementById("currCostPerCat").innerHTML = "Cost: " + gameData.costPerCat + " clicks"
 		document.getElementById("currCat2").style.visibility = 'visible'
 		document.getElementById("currClickPerCat").style.visibility = 'visible'
-		document.getElementById("currClickPerCat").innerHTML = gameData.clickPerCat * gameData.gainPerCatClick + " CpS"
+		Refresh()
 	}
 }
 
@@ -107,10 +97,9 @@ function buyCatFood(){
 		gameData.click -= gameData.costCatFood
 		gameData.gainPerCatClick *= 2 
 		gameData.boughtCatFood = true
-		document.getElementById("buttonClicked").innerHTML = gameData.click + " clicks"
-		document.getElementById("currClickPerCat").innerHTML = gameData.clickPerCat * gameData.gainPerCatClick + " CpS"
 		document.getElementById("buttonCatFood").innerHTML = "Bought cat food"
 		document.getElementById("currCostCatFood").innerHTML = ""
 		document.getElementById("descCatFood").innerHTML = "Your cats finally have something to eat"
+		Refresh()
 	}
 }
