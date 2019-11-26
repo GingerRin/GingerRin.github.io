@@ -5,44 +5,134 @@
      content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
     <title>Click!</title>
     <style>
-    	p.unlockables{
-    		visibility: hidden;
-    	}
-    	p.ex1{
-    		display: inline;
-    	}
+    	body {font-family: Arial;}
+
+        .unlockables{visibility: hidden;}
+
+        .goal10{visibility: hidden;}
+
+        .goal100{visibility: hidden;}
+
+        .goal250{visibility: hidden;}
+
+    	p.ex1{display: inline;}
+
     	div.box1{
     		border: 5px solid lightgrey;
     		border-radius: 5px;
     	}
-    	h2.box1{
-    		margin-left: 10px;
-    	}
-    	.button{
-    		unselectable: "on";
-    	}
+
+    	h2.box1{margin-left: 10px;}
+
+    	.button{unselectable: "on";}
+
+        .click button{
+            display: inline-block;
+            padding: 15px 15px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #000;
+            background-color: #ff2626;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #b02a2a;
+        }
+
+        .click button:hover{
+            background-color: #b82a2a;
+            color: #fff;
+        }
+
+        .click button:active {
+            background-color: #b82a2a;
+            box-shadow: 0 5px #4f1c1c;
+            transform: translateY(4px);
+        }
+
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        .tab button:hover {background-color: #ddd;}
+
+        .tab button.active {background-color: #ccc;}
+
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        hr {
+            display: block;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin: 1em 0;
+            padding: 0;
+        }
+
     </style>
   </head>
   <body onload="Update()">
-    <div class="box1"><h2 class="box1" id="buttonClicked">0 click</h2></div><br>
-    <p class="ex1"><button onClick="clickButton()">I'm a button</button> Click per click: 
-    	<p class="ex1" id="currClickPerClick">1</p></p>
+    <div class="box1"><h2 class="box1" id="buttonClicked">0 click</h2></div>
 
-    <p class="unlockables ex1" id="buyClick"><button id="buttonCPC" onClick="buyClickPerClick()">Buy 1 click per click </button> 
-    	<p class="unlockables ex1" id="currCostPerClick">Cost: 10 clicks</p></p>
+    <p class="click"><button onClick="clickButton()">I'm a Button</button></p>
 
-    <p class="unlockables ex1" id="buyCat"><button id="buttonCat" onClick="buyCat()">Buy 1 cat </button> 
-    	<p class="unlockables ex1" id="currCostPerCat">Cost: 100 clicks</p></p>
+    <div class="tab">
+        <button id="tabClickers" class="tablinks" onclick="openCity(event, 'Clickers')">Clickers</button>
+        <button id="tabCats" class="tablinks goal100" onclick="openCity(event, 'Cats')">Cats</button>
+        <button id="tabSettings" class="tablinks goal100" onclick="openCity(event, 'Settings')">Settings</button>
+    </div>
 
-    <p class="unlockables" id="currCat">You have 0 cat</p> 
+    <div id="Clickers" class="tabcontent">
+        <br>
+        <p class="ex1">Click per click: </p>
+        <p class="ex1" id="currClickPerClick">1</p>
+        <hr class="goal10">
+        <p class="goal10 ex1" id="buyClick"><button id="buttonCPC" onClick="buyClickPerClick()">Buy 1 click per click </button> 
+        <p class="goal10 ex1" id="currCostPerClick">Cost: 10 clicks</p></p>
+    </div>
 
-    <p class="unlockables ex1" id="currCat2">Click by Cat(seconds): 
-    	<p class="unlockables ex1" id="currClickPerCat">1 CpS</p></p>
 
-    <p class="unlockables ex1" id="buyCatFood"><button id="buttonCatFood" onClick="buyCatFood()">Buy cat food </button> 
-    	<p class="unlockables ex1" id="currCostCatFood">Cost: 250 clicks</p>
-    	<p class="unlockables" id="descCatFood">Make your cats look less like slaves. [Double your Click by Cat]</p>
+    <div id="Cats" class="tabcontent">
+        <br>
+        <p class="goal100 ex1" id="buyCat"><button id="buttonCat" onClick="buyCat()">Buy 1 cat </button> 
+        <p class="goal100 ex1" id="currCostPerCat">Cost: 100 clicks</p></p>
 
+        <p class="unlockables" id="currCat">You have 0 cat</p> 
+
+        <p class="unlockables ex1" id="currCat2">Click by Cat(seconds): 
+        <p class="unlockables ex1" id="currClickPerCat">1 CpS</p></p>
+        <hr class="goal250">
+        <p class="goal250 ex1" id="buyCatFood"><button id="buttonCatFood" onClick="buyCatFood()">Buy cat food </button> 
+        <p class="goal250 ex1" id="currCostCatFood">Cost: 250 clicks</p>
+        <p class="goal250" id="descCatFood">Make your cats look less like slaves. [Double your Click by Cat]</p>
+    </div>
+
+
+    <div id="Settings" class="tabcontent">
+        <p>Under Construction</p>
+    </div>
+    
     <script src="main.js" charset="utf-8" type="text/javascript"></script>
   </body>
 </html>

@@ -19,6 +19,7 @@ var gameData = {
 function Update(){
 	update = setInterval(Main, 100)
 	cat = setInterval(catClick, 1000)
+	document.getElementById("tabClickers").click()
 }
 
 function Refresh(){
@@ -35,25 +36,21 @@ function Refresh(){
 function Main(){
 	if(gameData.click>=gameData.highestClick) gameData.highestClick = gameData.click
 	if(gameData.highestClick>=10){
-		document.getElementById("buyClick").style.visibility = 'visible'
-		document.getElementById("currCostPerClick").style.visibility = 'visible'
+		Unlock("goal10")
 	}
 
 	if(gameData.click>=gameData.costPerClick) document.getElementById("buttonCPC").disabled = false
 	else document.getElementById("buttonCPC").disabled = true
 	
 	if(gameData.highestClick>=100){
-		document.getElementById("buyCat").style.visibility = 'visible'
-		document.getElementById("currCostPerCat").style.visibility = 'visible'
+		Unlock("goal100")
 	}
 	
 	if(gameData.click>=gameData.costPerCat) document.getElementById("buttonCat").disabled = false
 	else document.getElementById("buttonCat").disabled = true
 	
 	if(gameData.highestClick>=250 && gameData.boughtCatFood == false && gameData.cat>=1){
-		document.getElementById("buyCatFood").style.visibility = 'visible'
-		document.getElementById("currCostCatFood").style.visibility = 'visible'
-		document.getElementById("descCatFood").style.visibility = 'visible'
+		Unlock("goal250")
 	}
 	if(gameData.click>=gameData.costCatFood && gameData.boughtCatFood == false) 
 		document.getElementById("buttonCatFood").disabled = false
@@ -103,5 +100,27 @@ function buyCatFood(){
 		document.getElementById("currCostCatFood").innerHTML = ""
 		document.getElementById("descCatFood").innerHTML = "Your cats finally have something to eat"
 		Refresh()
+	}
+}
+
+function openCity(evt, cityName){
+	var i, tabcontent, tablinks
+	tabcontent = document.getElementsByClassName("tabcontent")
+	for(i=0;i<tabcontent.length;i++){
+		tabcontent[i].style.display = "none"
+	}
+	tablinks = document.getElementsByClassName("tablinks")
+	for(i=0;i<tablinks.length;i++){
+		tablinks[i].className = tablinks[i].className.replace(" active", "")
+	}
+	document.getElementById(cityName).style.display = "block"
+	evt.currentTarget.className += " active"
+}
+
+function Unlock(goal){
+	var i, eachClass
+	eachClass = document.getElementsByClassName(goal)
+	for(i=0;i<eachClass.length;i++){
+		eachClass[i].style.visibility = "visible"
 	}
 }
