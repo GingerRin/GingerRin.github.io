@@ -22,7 +22,6 @@ var gameData = {
 function Update(){
 	update = setInterval(Main, 10)
 	cat = setInterval(catClick, 1000)
-	document.getElementById("tabClickers").click()
 }
 
 function Refresh(){
@@ -41,6 +40,7 @@ function Main(){
 	if(gameData.cat>=gameData.highestCat) gameData.highestCat = gameData.cat
 	if(gameData.highestClick>=10){
 		Unlock("click10")
+		document.getElementById("tabClickers").click()
 	}
 
 	if(gameData.click>=gameData.costPerClick) document.getElementById("buttonCPC").disabled = false
