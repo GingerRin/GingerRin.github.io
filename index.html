@@ -9,11 +9,13 @@
 
         .unlockables{display: none;}
 
-        .goal10{display: none;}
+        .click10{display: none;}
 
-        .goal100{display: none;}
+        .click100{display: none;}
 
-        .goal250{display: none;}
+        .click250{display: none;}
+
+        .cat5{display: none;}
 
     	p.ex1{display: inline;}
 
@@ -97,26 +99,34 @@
 
     <p class="click"><button onClick="clickButton()">I'm a Button</button></p>
 
-    <div class="tab">
-        <button id="tabClickers" class="tablinks" onclick="openCity(event, 'Clickers')">Clickers</button>
-        <button id="tabCats" class="tablinks goal100" onclick="openCity(event, 'Cats')">Cats</button>
-        <button id="tabSettings" class="tablinks goal100" onclick="openCity(event, 'Settings')">Settings</button>
+    <div class="tab click10">
+        <button id="tabClickers" class="tablinks click10" onclick="openCity(event, 'Clickers')">Clickers</button>
+        <button id="tabCats" class="tablinks click100" onclick="openCity(event, 'Cats')">Cats</button>
+        <button id="tabSettings" class="tablinks click100" onclick="openCity(event, 'Settings')">Settings</button>
     </div>
 
     <div id="Clickers" class="tabcontent">
+        <div class="click10">
         <br>
         <p class="ex1">Click per click: </p>
         <p class="ex1" id="currClickPerClick">1</p>
-    	<div class="goal10">    
+    	<div class="click10">    
     		<hr>
-        	<p class="ex1" id="buyClick"><button id="buttonCPC" onClick="buyClickPerClick()">Buy 1 click per click </button> 
+        	<p class="ex1" id="buyClick"><button id="buttonCPC" onClick="buyClickPerClick()">Buy 1 Click per Click </button> 
         	<p class="ex1" id="currCostPerClick">Cost: 10 clicks</p></p>
+    	</div>
+    	<div class="click250">    
+    		<hr>
+        	<p class="ex1" id="buyMouse"><button id="buttonMouse" onClick="buyMouse()">Buy second mouse</button> 
+        	<p class="ex1" id="currCostMouse">Cost: 500 clicks</p>
+        	<p id="descMouse">Many says it does not work that way, prove them wrong. <br>[Doubles your Click per Click]</p></p>
+    	</div>
     	</div>
     </div>
 
 
     <div id="Cats" class="tabcontent">
-        <div class="goal100">
+        <div class="click100">
 	        <br>
 	        <p class="ex1" id="buyCat"><button id="buttonCat" onClick="buyCat()">Buy 1 cat </button> 
 	        <p class="ex1" id="currCostPerCat">Cost: 100 clicks</p></p>
@@ -126,18 +136,18 @@
 	        <p class="unlockables" id="currCat2">Click by Cat(seconds): 
 	        <p class="unlockables" id="currClickPerCat">1 CpS</p></p>
         </div>
-        <div class="goal250">
+        <div class="cat5">
 	        <hr>
 	        <p class="ex1" id="buyCatFood"><button id="buttonCatFood" onClick="buyCatFood()">Buy cat food </button> 
 	        <p class="ex1" id="currCostCatFood">Cost: 250 clicks</p>
-	        <p id="descCatFood">Make your cats look less like slaves. [Double your Click by Cat]</p></p>
+	        <p id="descCatFood">Make your cats look less like slaves. <br>[Doubles your Click by Cat]</p></p>
 	    </div>
     </div>
 
 
     <div id="Settings" class="tabcontent">
         <p>Under Construction</p>
-        <p>Version: 0.0.0.0002</p>
+        <p>Version: 0.0.0.0003</p>
     </div>
     
     <script src="main.js" charset="utf-8" type="text/javascript"></script>

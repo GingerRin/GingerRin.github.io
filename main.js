@@ -6,6 +6,7 @@ var gameData = {
   gainPerClick: 1,
   costScale: 1,
   cat: 0,
+  highestCat: 0,
   costPerCat: 100,
   gainPerCat: 1,
   costScale2: 50,
@@ -13,11 +14,13 @@ var gameData = {
   gainPerCatClick: 1,
   catFood: 0,
   costCatFood: 250,
-  boughtCatFood: false
+  costMouse: 500,
+  boughtCatFood: false,
+  boughtMouse: false
 }
 
 function Update(){
-	update = setInterval(Main, 100)
+	update = setInterval(Main, 10)
 	cat = setInterval(catClick, 1000)
 	document.getElementById("tabClickers").click()
 }
@@ -25,7 +28,7 @@ function Update(){
 function Refresh(){
 	if(gameData.click<=1) document.getElementById("buttonClicked").innerHTML = gameData.click + " click"
 	else document.getElementById("buttonClicked").innerHTML = gameData.click + " clicks"
-	document.getElementById("currClickPerClick").innerHTML = gameData.clickPerClick
+	document.getElementById("currClickPerClick").innerHTML = gameData.clickPerClick * gameData.gainPerClick
 	document.getElementById("currCostPerClick").innerHTML = "Cost: " + gameData.costPerClick + " clicks"
 	if(gameData.cat<=1)document.getElementById("currCat").innerHTML = "You have " + gameData.cat + " cat"
 	else document.getElementById("currCat").innerHTML = "You have " + gameData.cat + " cats"
@@ -35,23 +38,32 @@ function Refresh(){
 
 function Main(){
 	if(gameData.click>=gameData.highestClick) gameData.highestClick = gameData.click
+	if(gameData.cat>=gameData.highestCat) gameData.highestCat = gameData.cat
 	if(gameData.highestClick>=10){
-		Unlock("goal10")
+		Unlock("click10")
 	}
 
 	if(gameData.click>=gameData.costPerClick) document.getElementById("buttonCPC").disabled = false
 	else document.getElementById("buttonCPC").disabled = true
 	
 	if(gameData.highestClick>=100){
-		Unlock("goal100")
+		Unlock("click100")
 	}
 	
 	if(gameData.click>=gameData.costPerCat) document.getElementById("buttonCat").disabled = false
 	else document.getElementById("buttonCat").disabled = true
 	
-	if(gameData.highestClick>=250 && gameData.boughtCatFood == false && gameData.cat>=1){
-		Unlock("goal250")
+	if(gameData.highestClick>=250){
+		Unlock("click250")
 	}
+
+	if(gameData.click>=gameData.costMouse) document.getElementById("buttonMouse").disabled = false
+	else document.getElementById("buttonMouse").disabled = true
+
+	if(gameData.highestCat>=5 && gameData.boughtCatFood == false && gameData.cat>=1){
+		Unlock("cat5")
+	}
+
 	if(gameData.click>=gameData.costCatFood && gameData.boughtCatFood == false) 
 		document.getElementById("buttonCatFood").disabled = false
 	else document.getElementById("buttonCatFood").disabled = true
@@ -63,7 +75,7 @@ function catClick(){
 }
 
 function clickButton(){
-	gameData.click += gameData.clickPerClick
+	gameData.click += gameData.clickPerClick * gameData.gainPerClick
 	Refresh()
 }
 
@@ -72,7 +84,8 @@ function buyClickPerClick(){
 		gameData.click -= gameData.costPerClick
 		gameData.clickPerClick += gameData.gainPerClick
 		gameData.costPerClick += gameData.costScale
-		gameData.costScale += gameData.costScale
+		gameData.costPerClick = Math.round(gameData.costPerClick)
+		gameData.costScale *= 1.25
 		Refresh()
 	}
 }
@@ -82,7 +95,8 @@ function buyCat(){
 		gameData.click -= gameData.costPerCat
 		gameData.cat += gameData.gainPerCat
 		gameData.costPerCat += gameData.costScale2
-		gameData.costScale2 += gameData.costScale2
+		gameData.costPerCat = Math.round(gameData.costPerCat)
+		gameData.costScale2 *= 1.25
 		gameData.clickPerCat += 1
 		document.getElementById("currCat").style.display = "block"
 		document.getElementById("currCat2").style.display = "inline"
@@ -103,6 +117,18 @@ function buyCatFood(){
 	}
 }
 
+function buyMouse(){
+	if(gameData.click>=gameData.costMouse){
+		gameData.click -= gameData.costMouse
+		gameData.gainPerClick *= 2 
+		gameData.boughtMouse = true
+		document.getElementById("buttonMouse").innerHTML = "Bought cat food"
+		document.getElementById("currCostMouse").innerHTML = ""
+		document.getElementById("descMouse").innerHTML = "I don't know how you are using 2 mouses but you are doing it anyway."
+		Refresh()
+	}
+}
+
 function openCity(evt, cityName){
 	var i, tabcontent, tablinks
 	tabcontent = document.getElementsByClassName("tabcontent")
@@ -117,9 +143,9 @@ function openCity(evt, cityName){
 	evt.currentTarget.className += " active"
 }
 
-function Unlock(goal){
+function Unlock(click){
 	var i, eachClass
-	eachClass = document.getElementsByClassName(goal)
+	eachClass = document.getElementsByClassName(click)
 	for(i=0;i<eachClass.length;i++){
 		eachClass[i].style.display = "block"
 	}
