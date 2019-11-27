@@ -84,9 +84,9 @@ function buyCat(){
 		gameData.costPerCat += gameData.costScale2
 		gameData.costScale2 += gameData.costScale2
 		gameData.clickPerCat += 1
-		document.getElementById("currCat").style.visibility = 'visible'
-		document.getElementById("currCat2").style.visibility = 'visible'
-		document.getElementById("currClickPerCat").style.visibility = 'visible'
+		document.getElementById("currCat").style.display = "block"
+		document.getElementById("currCat2").style.display = "inline"
+		document.getElementById("currClickPerCat").style.display = "inline"
 		Refresh()
 	}
 }
@@ -121,6 +121,6 @@ function Unlock(goal){
 	var i, eachClass
 	eachClass = document.getElementsByClassName(goal)
 	for(i=0;i<eachClass.length;i++){
-		eachClass[i].style.visibility = "visible"
+		eachClass[i].style.display = "block"
 	}
 }

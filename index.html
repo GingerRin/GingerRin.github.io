@@ -7,13 +7,13 @@
     <style>
     	body {font-family: Arial;}
 
-        .unlockables{visibility: hidden;}
+        .unlockables{display: none;}
 
-        .goal10{visibility: hidden;}
+        .goal10{display: none;}
 
-        .goal100{visibility: hidden;}
+        .goal100{display: none;}
 
-        .goal250{visibility: hidden;}
+        .goal250{display: none;}
 
     	p.ex1{display: inline;}
 
@@ -107,31 +107,37 @@
         <br>
         <p class="ex1">Click per click: </p>
         <p class="ex1" id="currClickPerClick">1</p>
-        <hr class="goal10">
-        <p class="goal10 ex1" id="buyClick"><button id="buttonCPC" onClick="buyClickPerClick()">Buy 1 click per click </button> 
-        <p class="goal10 ex1" id="currCostPerClick">Cost: 10 clicks</p></p>
+    	<div class="goal10">    
+    		<hr>
+        	<p class="ex1" id="buyClick"><button id="buttonCPC" onClick="buyClickPerClick()">Buy 1 click per click </button> 
+        	<p class="ex1" id="currCostPerClick">Cost: 10 clicks</p></p>
+    	</div>
     </div>
 
 
     <div id="Cats" class="tabcontent">
-        <br>
-        <p class="goal100 ex1" id="buyCat"><button id="buttonCat" onClick="buyCat()">Buy 1 cat </button> 
-        <p class="goal100 ex1" id="currCostPerCat">Cost: 100 clicks</p></p>
+        <div class="goal100">
+	        <br>
+	        <p class="ex1" id="buyCat"><button id="buttonCat" onClick="buyCat()">Buy 1 cat </button> 
+	        <p class="ex1" id="currCostPerCat">Cost: 100 clicks</p></p>
 
-        <p class="unlockables" id="currCat">You have 0 cat</p> 
+	        <p class="unlockables" id="currCat">You have 0 cat</p> 
 
-        <p class="unlockables ex1" id="currCat2">Click by Cat(seconds): 
-        <p class="unlockables ex1" id="currClickPerCat">1 CpS</p></p>
-        <hr class="goal250">
-        <p class="goal250 ex1" id="buyCatFood"><button id="buttonCatFood" onClick="buyCatFood()">Buy cat food </button> 
-        <p class="goal250 ex1" id="currCostCatFood">Cost: 250 clicks</p>
-        <p class="goal250" id="descCatFood">Make your cats look less like slaves. [Double your Click by Cat]</p>
+	        <p class="unlockables" id="currCat2">Click by Cat(seconds): 
+	        <p class="unlockables" id="currClickPerCat">1 CpS</p></p>
+        </div>
+        <div class="goal250">
+	        <hr>
+	        <p class="ex1" id="buyCatFood"><button id="buttonCatFood" onClick="buyCatFood()">Buy cat food </button> 
+	        <p class="ex1" id="currCostCatFood">Cost: 250 clicks</p>
+	        <p id="descCatFood">Make your cats look less like slaves. [Double your Click by Cat]</p></p>
+	    </div>
     </div>
 
 
     <div id="Settings" class="tabcontent">
         <p>Under Construction</p>
-        <p>Version: 0.0.0.0001</p>
+        <p>Version: 0.0.0.0002</p>
     </div>
     
     <script src="main.js" charset="utf-8" type="text/javascript"></script>
