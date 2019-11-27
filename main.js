@@ -54,18 +54,19 @@ function Main(){
 	if(gameData.click>=gameData.costPerCat) document.getElementById("buttonCat").disabled = false
 	else document.getElementById("buttonCat").disabled = true
 	
-	if(gameData.highestClick>=250){
+	if(gameData.highestClick>=250 && !gameData.boughtMouse){
 		Unlock("click250")
 	}
 
-	if(gameData.click>=gameData.costMouse) document.getElementById("buttonMouse").disabled = false
+	if(gameData.click>=gameData.costMouse && !gameData.boughtMouse) 
+		document.getElementById("buttonMouse").disabled = false
 	else document.getElementById("buttonMouse").disabled = true
 
 	if(gameData.highestCat>=5 && gameData.boughtCatFood == false && gameData.cat>=1){
 		Unlock("cat5")
 	}
 
-	if(gameData.click>=gameData.costCatFood && gameData.boughtCatFood == false) 
+	if(gameData.click>=gameData.costCatFood && !gameData.boughtCatFood) 
 		document.getElementById("buttonCatFood").disabled = false
 	else document.getElementById("buttonCatFood").disabled = true
 }
