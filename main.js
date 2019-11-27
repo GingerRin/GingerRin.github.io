@@ -84,7 +84,7 @@ function clickButton(){
 function buyClickPerClick(){
 	if(gameData.click>=gameData.costPerClick){
 		gameData.click -= gameData.costPerClick
-		gameData.clickPerClick += gameData.gainPerClick
+		gameData.clickPerClick += 1
 		gameData.costPerClick += gameData.costScale
 		gameData.costPerClick = Math.round(gameData.costPerClick)
 		gameData.costScale *= 1.25
