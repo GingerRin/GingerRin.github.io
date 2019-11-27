@@ -15,6 +15,7 @@ var gameData = {
   catFood: 0,
   costCatFood: 250,
   costMouse: 500,
+  openTab: false,
   boughtCatFood: false,
   boughtMouse: false
 }
@@ -40,7 +41,7 @@ function Main(){
 	if(gameData.cat>=gameData.highestCat) gameData.highestCat = gameData.cat
 	if(gameData.highestClick>=10){
 		Unlock("click10")
-		document.getElementById("tabClickers").click()
+		clickDefault()
 	}
 
 	if(gameData.click>=gameData.costPerClick) document.getElementById("buttonCPC").disabled = false
@@ -148,5 +149,12 @@ function Unlock(click){
 	eachClass = document.getElementsByClassName(click)
 	for(i=0;i<eachClass.length;i++){
 		eachClass[i].style.display = "block"
+	}
+}
+
+function clickDefault(){
+	if(!gameData.openTab){
+		document.getElementById("tabClickers").click()
+		gameData.openTab = true
 	}
 }
